@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://rf244ouctwhm"]
+
+[ext_resource type="Texture2D" uid="uid://dm3m4rfak3gjn" path="res://Tile-Placeholder.png" id="1_d7hlr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gquyt"]
+size = Vector2(64, 64)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gquyt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d7hlr")

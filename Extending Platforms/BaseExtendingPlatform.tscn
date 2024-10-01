@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfdlvulsxcbew"]
+
+[ext_resource type="Script" path="res://Extending Platforms/base_extending_platform.gd" id="1_6nydi"]
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_whxkb"]
+
+[node name="BaseExtendingPlatform" type="AnimatableBody2D"]
+position = Vector2(240, 128)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_6nydi")
+
+[node name="PlatformCollision" type="CollisionPolygon2D" parent="."]
+
+[node name="PlatformSprite" type="Polygon2D" parent="."]
+texture = SubResource("Texture2DRD_whxkb")
+
+[node name="TopRightCorner" type="Marker2D" parent="."]
+position = Vector2(56, 0)
+
+[node name="BottomLeftCorner" type="Marker2D" parent="."]
+position = Vector2(0, 24)
+
+[node name="BottomRightCorner" type="Marker2D" parent="."]
+position = Vector2(56, 24)
+
+[node name="TopLeftCorner" type="Marker2D" parent="."]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://nnd02dr861e7"]
+
+[ext_resource type="PackedScene" uid="uid://rf244ouctwhm" path="res://Tile/tile.tscn" id="1_t36fk"]
+[ext_resource type="PackedScene" uid="uid://bhr501em2xdeu" path="res://Player/player.tscn" id="2_ghp2h"]
+[ext_resource type="PackedScene" uid="uid://bfdlvulsxcbew" path="res://Extending Platforms/BaseExtendingPlatform.tscn" id="3_b8w44"]
+
+[node name="DebugLevel" type="Node2D"]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("1_t36fk")]
+position = Vector2(480, 616)
+scale = Vector2(15, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_ghp2h")]
+position = Vector2(249, 487)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("1_t36fk")]
+modulate = Color(1, 1, 1, 0.427451)
+position = Vector2(330, 552)
+
+[node name="BaseExtendingPlatform1" parent="." instance=ExtResource("3_b8w44")]
+position = Vector2(222, 552)
+
+[node name="ReversedPlatform" parent="." instance=ExtResource("3_b8w44")]
+position = Vector2(70, 368)
+isReversed = true
