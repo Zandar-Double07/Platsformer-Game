@@ -1,3 +1,38 @@
-[gd_scene format=3 uid="uid://bp2lflc3k4ad1"]
+[gd_scene load_steps=5 format=3 uid="uid://bp2lflc3k4ad1"]
+
+[ext_resource type="PackedScene" uid="uid://dun8xnwii8mjj" path="res://Components/Hazard.tscn" id="1_41p7g"]
+[ext_resource type="Script" path="res://Hazards/spike.gd" id="1_rs757"]
+[ext_resource type="Texture2D" uid="uid://cuvgp5fb81r0e" path="res://Hazards/spike.png" id="2_letf0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed1fv"]
+size = Vector2(16, 16)
 
 [node name="Spike" type="Node2D"]
+position = Vector2(296, 104)
+script = ExtResource("1_rs757")
+num_spikes = 24
+
+[node name="Hazard" parent="." instance=ExtResource("1_41p7g")]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazard"]
+shape = SubResource("RectangleShape2D_ed1fv")
+
+[node name="TextureRect" type="TextureRect" parent="Hazard/CollisionShape2D"]
+unique_name_in_owner = true
+texture_filter = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_letf0")
+expand_mode = 2
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm3m4rfak3gjn"
-path="res://.godot/imported/Tile-Placeholder.png-21eda89b952f4c3229f9530733c6652f.ctex"
+uid="uid://dms3vp8p4t8y4"
+path="res://.godot/imported/button-placeholder.png-bb9fdfefb4ab2f48ff01e5ee9114c7b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tile-Placeholder.png"
-dest_files=["res://.godot/imported/Tile-Placeholder.png-21eda89b952f4c3229f9530733c6652f.ctex"]
+source_file="res://Pressable Objects/button-placeholder.png"
+dest_files=["res://.godot/imported/button-placeholder.png-bb9fdfefb4ab2f48ff01e5ee9114c7b7.ctex"]
 
 [params]
 

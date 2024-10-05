@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxkux73oo8rwx"]
+
+[ext_resource type="Script" path="res://Pressable Objects/switch.gd" id="1_covsq"]
+[ext_resource type="Texture2D" uid="uid://c23apdp15xw80" path="res://Pressable Objects/switch-placeholder-Sheet.png" id="2_um1dv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q886s"]
+atlas = ExtResource("2_um1dv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_126cd"]
+atlas = ExtResource("2_um1dv")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rqja"]
+atlas = ExtResource("2_um1dv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjq1k"]
+atlas = ExtResource("2_um1dv")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r7iop"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q886s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_126cd")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rqja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjq1k")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g65y3"]
+radius = 64.0
+
+[node name="Switch" type="Node2D"]
+texture_filter = 3
+position = Vector2(192, 96)
+script = ExtResource("1_covsq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r7iop")
+animation = &"off"
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_g65y3")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
