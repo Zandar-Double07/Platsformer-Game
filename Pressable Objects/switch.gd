@@ -9,11 +9,11 @@ func _ready():
 	$AnimatedSprite2D.set_animation("off")
 	
 #when the player gets close to the switch
-func _on_player_detection_body_entered(body):
+func _on_player_detection_body_entered(_body):
 	$AnimatedSprite2D.play()
 
 #when the play leaves the area
-func _on_player_detection_body_exited(body):
+func _on_player_detection_body_exited(_body):
 	$AnimatedSprite2D.stop()
 
 #when the player
@@ -22,5 +22,5 @@ func _unhandled_input(event:InputEvent):
 	if event.is_action_pressed("switch") and $PlayerDetection.get_overlapping_bodies().size() > 0: 
 		switched = not switched
 		$AnimatedSprite2D.set_animation("off" if switched else "on")
-		emit_signal("button_pressed")
+		button_pressed.emit()
 		print("switch pressed")

@@ -1,34 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfdlvulsxcbew"]
+[gd_scene load_steps=3 format=3 uid="uid://bfdlvulsxcbew"]
 
 [ext_resource type="Script" path="res://Extending Platforms/base_extending_platform.gd" id="1_6nydi"]
 [ext_resource type="Shape2D" uid="uid://d202bjr62o33i" path="res://Extending Platforms/default_extending_platform_length.tres" id="2_0mblh"]
 
-[sub_resource type="Texture2DRD" id="Texture2DRD_nk272"]
-
-[node name="BaseExtendingPlatform" type="AnimatableBody2D"]
+[node name="ExtendingPlatform" type="AnimatableBody2D"]
+position = Vector2(57, 7)
+rotation = 1.5708
 collision_layer = 2
-collision_mask = 7
+collision_mask = 0
 script = ExtResource("1_6nydi")
-
-[node name="PlatformCollision" type="CollisionPolygon2D" parent="."]
-
-[node name="PlatformSprite" type="Polygon2D" parent="."]
-texture = SubResource("Texture2DRD_nk272")
-
-[node name="BottomRightCorner" type="Marker2D" parent="."]
-position = Vector2(64, 0)
+metadata/_edit_group_ = true
 
 [node name="ExtensionBody" type="CharacterBody2D" parent="."]
 collision_layer = 0
 collision_mask = 7
+collision_priority = 2.0
+slide_on_ceiling = false
 wall_min_slide_angle = 3.14159
+floor_max_angle = 0.0
+floor_snap_length = 0.0
 platform_on_leave = 2
+platform_floor_layers = 0
 
 [node name="ExtensionCollision" type="CollisionShape2D" parent="ExtensionBody"]
 shape = ExtResource("2_0mblh")
 
+[node name="PlatformCollision" type="CollisionPolygon2D" parent="."]
+
+[node name="PlatformSprite" type="Polygon2D" parent="."]
+texture_filter = 3
+texture_repeat = 2
+
+[node name="BottomRightCorner" type="Marker2D" parent="."]
+position = Vector2(64, 0)
+
 [node name="BottomLeftCorner" type="Marker2D" parent="."]
 position = Vector2(0, 32)
-
-[node name="BaseCollision" type="CollisionShape2D" parent="BottomLeftCorner"]
-shape = ExtResource("2_0mblh")

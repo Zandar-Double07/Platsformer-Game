@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://nnd02dr861e7"]
+[gd_scene load_steps=13 format=3 uid="uid://nnd02dr861e7"]
 
 [ext_resource type="PackedScene" uid="uid://rf244ouctwhm" path="res://Tile/tile.tscn" id="1_t36fk"]
 [ext_resource type="PackedScene" uid="uid://bhr501em2xdeu" path="res://Player/player.tscn" id="2_ghp2h"]
@@ -13,6 +13,12 @@
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_12etd"]
 b = Vector2(64, 0)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hr0rs"]
+b = Vector2(64, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tfwav"]
+b = Vector2(64, -32)
+
 [node name="DebugLevel" type="Node2D"]
 
 [node name="StaticBody2D" parent="." instance=ExtResource("1_t36fk")]
@@ -24,30 +30,36 @@ modulate = Color(1, 1, 1, 0.427451)
 position = Vector2(352, 576)
 
 [node name="BaseExtendingPlatform1" parent="." instance=ExtResource("3_b8w44")]
-position = Vector2(273, 496)
-rotation = 3.14159
+position = Vector2(288, 465)
 extension_segment = SubResource("SegmentShape2D_12etd")
+base_segment = SubResource("SegmentShape2D_hr0rs")
 
 [node name="ReversedPlatform" parent="." instance=ExtResource("3_b8w44")]
-position = Vector2(32, 544)
-rotation = 1.5708
+position = Vector2(43, 544)
 isReversed = true
+extension_segment = SubResource("SegmentShape2D_tfwav")
+
+[node name="SpikePlatform" parent="." node_paths=PackedStringArray("platformChild") instance=ExtResource("3_b8w44")]
+modulate = Color(1, 1, 1, 0.376471)
+position = Vector2(568, 445)
+platformChild = NodePath("PlatformSpike")
+
+[node name="PlatformSpike" parent="SpikePlatform" instance=ExtResource("4_ots11")]
+position = Vector2(24, -8.0001)
 
 [node name="Spike" parent="." instance=ExtResource("4_ots11")]
 position = Vector2(416, 576)
-
-[node name="Player" parent="." instance=ExtResource("2_ghp2h")]
-position = Vector2(256, 416)
 
 [node name="Lava" parent="." instance=ExtResource("5_mj2xr")]
 position = Vector2(832, 352)
 shape_scale = Vector2(5, 7)
 
 [node name="MovableBox" parent="." instance=ExtResource("6_6o2wi")]
-position = Vector2(352, 480)
+position = Vector2(352, 135)
 
 [node name="MovableBox2" parent="." instance=ExtResource("6_6o2wi")]
-position = Vector2(96, 576)
+position = Vector2(352, 525)
+collision_priority = 0.0
 
 [node name="Key" parent="." instance=ExtResource("7_d3yqs")]
 position = Vector2(576, 576)
@@ -57,3 +69,12 @@ position = Vector2(240, 600)
 
 [node name="Switch" parent="." instance=ExtResource("9_quwx0")]
 position = Vector2(695, 496)
+
+[node name="BaseExtendingPlatform2" parent="." instance=ExtResource("3_b8w44")]
+position = Vector2(169, 509)
+rotation = 3.14159
+extension_segment = SubResource("SegmentShape2D_12etd")
+base_segment = SubResource("SegmentShape2D_hr0rs")
+
+[node name="Player" parent="." instance=ExtResource("2_ghp2h")]
+position = Vector2(237, 384)

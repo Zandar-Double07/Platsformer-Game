@@ -10,7 +10,7 @@ size = Vector2(16, 16)
 [node name="Spike" type="Node2D"]
 position = Vector2(296, 104)
 script = ExtResource("1_rs757")
-num_spikes = 24
+num_spikes = 4
 
 [node name="Hazard" parent="." instance=ExtResource("1_41p7g")]
 collision_mask = 0

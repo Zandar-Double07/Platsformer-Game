@@ -17,7 +17,12 @@ config/icon="res://icon.svg"
 
 [display]
 
+window/size/resizable=false
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg")
 
 [input]
 
@@ -61,3 +66,7 @@ switch={
 2d_physics/layer_6="Lava Hazard"
 2d_physics/layer_7="Lazer Hazard"
 2d_physics/layer_8="Switch"
+
+[rendering]
+
+2d/snap/snap_2d_transforms_to_pixel=true

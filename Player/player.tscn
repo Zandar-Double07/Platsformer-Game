@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhr501em2xdeu"]
+[gd_scene load_steps=9 format=3 uid="uid://bhr501em2xdeu"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1wq5i"]
 [ext_resource type="Texture2D" uid="uid://b67epvrnq8rp" path="res://Player/Player-Sheet.png" id="1_d7jqk"]
 [ext_resource type="Shape2D" uid="uid://1qewjfa64scb" path="res://Player/player_hit_box.tres" id="2_uko6c"]
 [ext_resource type="PackedScene" uid="uid://cf780l4xnulpf" path="res://Components/Hitbox.tscn" id="3_pg2dw"]
+[ext_resource type="Script" path="res://Player/crush_detection.gd" id="5_oefqf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvb2p"]
 atlas = ExtResource("1_d7jqk")
@@ -33,8 +34,14 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(170, 258)
-collision_mask = 255
+position = Vector2(145, 263)
+collision_mask = 7
+collision_priority = 5.0
+floor_constant_speed = true
+floor_max_angle = 1.309
+floor_snap_length = 10.0
+platform_on_leave = 2
+safe_margin = 1.0
 script = ExtResource("1_1wq5i")
 metadata/_edit_group_ = true
 
@@ -49,11 +56,39 @@ animation = &"walk_right"
 
 [node name="Hitbox" parent="." instance=ExtResource("3_pg2dw")]
 position = Vector2(-3, 0)
+collision_layer = 0
 collision_mask = 112
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = ExtResource("2_uko6c")
 debug_color = Color(0.899342, 0.171908, 0.648036, 0.42)
+
+[node name="CrushDetection" type="Node2D" parent="."]
+script = ExtResource("5_oefqf")
+
+[node name="CrushLeft" type="RayCast2D" parent="CrushDetection"]
+target_position = Vector2(10, 0)
+collision_mask = 6
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="CrushRight" type="RayCast2D" parent="CrushDetection"]
+target_position = Vector2(-16, 0)
+collision_mask = 6
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="CrushUp" type="RayCast2D" parent="CrushDetection"]
+target_position = Vector2(0, -35)
+collision_mask = 6
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="CrushDown" type="RayCast2D" parent="CrushDetection"]
+target_position = Vector2(0, 35)
+collision_mask = 6
+hit_from_inside = true
+collide_with_areas = true
 
 [connection signal="onHit" from="Hitbox" to="." method="_on_hitbox_hit"]

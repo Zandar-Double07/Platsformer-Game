@@ -4,5 +4,5 @@ signal onHit
 	
 
 
-func _on_hazard_entered(area):
-	emit_signal("onHit")
+func _on_hazard_entered(_area):
+	onHit.emit()
