@@ -1,18 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkkxoqx7atgpx"]
+[gd_scene load_steps=8 format=3 uid="uid://dkkxoqx7atgpx"]
 
 [ext_resource type="Script" path="res://Key/key.gd" id="1_33i7a"]
+[ext_resource type="Texture2D" uid="uid://cgbrcmwdpoa50" path="res://Tile/Platsformer-TileSet.png" id="2_kphad"]
 [ext_resource type="PackedScene" uid="uid://cf780l4xnulpf" path="res://Components/Hitbox.tscn" id="2_tgb84"]
-[ext_resource type="Texture2D" uid="uid://3ss5y7kd53sd" path="res://Key/key.png" id="3_87pwq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sni6d"]
-atlas = ExtResource("3_87pwq")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd4x5"]
+atlas = ExtResource("2_kphad")
+region = Rect2(80, 336, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j51vj"]
+atlas = ExtResource("2_kphad")
+region = Rect2(96, 336, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h32ff"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sni6d")
+"texture": SubResource("AtlasTexture_cd4x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j51vj")
 }],
 "loop": true,
 "name": &"default",
@@ -22,12 +29,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hl515"]
 radius = 9.0
 
-[node name="Key" type="Node2D"]
+[node name="Key" type="Node2D" groups=["keys"]]
 script = ExtResource("1_33i7a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 sprite_frames = SubResource("SpriteFrames_h32ff")
+autoplay = "default"
 
 [node name="Hitbox" parent="." instance=ExtResource("2_tgb84")]
 collision_layer = 8

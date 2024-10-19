@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyef1y6ax5hrf"]
+
+[ext_resource type="Texture2D" uid="uid://dojpgfgoejyb5" path="res://Hazards/lazer-base.png" id="1_v6lrj"]
+[ext_resource type="Script" path="res://Hazards/lazer.gd" id="1_vg7i2"]
+[ext_resource type="Script" path="res://Components/hazard.gd" id="2_poa6p"]
+[ext_resource type="Script" path="res://addons/nine_patch_sprite_2d/nine_patch_sprite_2d.gd" id="4_71pqm"]
+[ext_resource type="Texture2D" uid="uid://c1hbokmvgyarn" path="res://Hazards/lazer-texture.png" id="5_n1dk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47600"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvaid"]
+size = Vector2(16, 16)
+
+[node name="Lazer" type="Node2D"]
+texture_filter = 3
+position = Vector2(38, 218)
+script = ExtResource("1_vg7i2")
+
+[node name="Hazard" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("2_poa6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazard"]
+shape = SubResource("RectangleShape2D_47600")
+
+[node name="NinePatchSprite2D" type="Node2D" parent="Hazard"]
+z_index = 1
+script = ExtResource("4_71pqm")
+texture = ExtResource("5_n1dk5")
+size = Vector2(16, 16)
+patch_margin_left = 2
+patch_margin_right = 2
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="RayCast2D" type="ShapeCast2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_lvaid")
+target_position = Vector2(0, -2000)
+max_results = 1
+collision_mask = 6
+collide_with_areas = true
+
+[node name="LazerBaseSprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.509804)
+texture_filter = 3
+texture = ExtResource("1_v6lrj")
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"pending_changes": {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": ""
+},
+"slice_section": true
+}

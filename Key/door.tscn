@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvaafxltjqbnt"]
+
+[ext_resource type="Script" path="res://Key/door.gd" id="1_pi4re"]
+[ext_resource type="Texture2D" uid="uid://cgbrcmwdpoa50" path="res://Tile/Platsformer-TileSet.png" id="2_ow2er"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcky7"]
+atlas = ExtResource("2_ow2er")
+region = Rect2(80, 368, 48, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jcyb"]
+atlas = ExtResource("2_ow2er")
+region = Rect2(128, 368, 48, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jij0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcky7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jcyb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jgoea"]
+radius = 35.0
+
+[node name="Door" type="Area2D"]
+texture_filter = 3
+collision_layer = 0
+script = ExtResource("1_pi4re")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jij0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jgoea")

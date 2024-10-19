@@ -11,18 +11,26 @@ config_version=5
 [application]
 
 config/name="Platsformer Game"
-run/main_scene="res://Main/DebugLevel.tscn"
+run/main_scene="res://Levels/DebugLevel.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+config/shadow_atlas/size=2047
 
 [display]
 
-window/size/resizable=false
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=2
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/nine_patch_sprite_2d/plugin.cfg")
+
+[global_group]
+
+keys=""
 
 [input]
 

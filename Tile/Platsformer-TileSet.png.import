@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdryxijyd6n27"
-path="res://.godot/imported/wood-platform.png-243769e230350ec9e1d758d36159ca97.ctex"
+uid="uid://cgbrcmwdpoa50"
+path="res://.godot/imported/Platsformer-TileSet.png-33b07f812c78ea8d7ab612acdf1ea9c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Extending Platforms/wood-platform.png"
-dest_files=["res://.godot/imported/wood-platform.png-243769e230350ec9e1d758d36159ca97.ctex"]
+source_file="res://Tile/Platsformer-TileSet.png"
+dest_files=["res://.godot/imported/Platsformer-TileSet.png-33b07f812c78ea8d7ab612acdf1ea9c7.ctex"]
 
 [params]
 

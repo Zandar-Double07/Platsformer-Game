@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bvqhbjv78m6hx"]
+
+[ext_resource type="Texture2D" uid="uid://cgbrcmwdpoa50" path="res://Tile/Platsformer-TileSet.png" id="1_owhtu"]
+
+[resource]
+atlas = ExtResource("1_owhtu")
+region = Rect2(0, 224, 32, 32)
+filter_clip = true

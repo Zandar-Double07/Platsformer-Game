@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cinv3a5etj8jf"
-path="res://.godot/imported/dirt-platform.png-d1c29a671b9a199d2302bdceb66721ef.ctex"
+uid="uid://bdm4uqpjq33mo"
+path="res://.godot/imported/[64x64] Dungeon Bricks Plain.png-2cc1837e835eb01b58eceb2d12ab0487.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Extending Platforms/dirt-platform.png"
-dest_files=["res://.godot/imported/dirt-platform.png-d1c29a671b9a199d2302bdceb66721ef.ctex"]
+source_file="res://Tile/[64x64] Dungeon Bricks Plain.png"
+dest_files=["res://.godot/imported/[64x64] Dungeon Bricks Plain.png-2cc1837e835eb01b58eceb2d12ab0487.ctex"]
 
 [params]
 

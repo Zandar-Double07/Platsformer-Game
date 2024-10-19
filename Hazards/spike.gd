@@ -8,6 +8,4 @@ func _ready():
 	var spike_size = Vector2(16 * num_spikes, 16)
 	hazardShape.size = spike_size
 	collision_shape_2d.shape = hazardShape
-	%TextureRect.size = spike_size
-	
-	%TextureRect.set_position(Vector2(-spike_size.x / 2, %TextureRect.position.y))
+	$NinePatchSprite2D.size = spike_size

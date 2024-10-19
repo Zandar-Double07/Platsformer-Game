@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3ss5y7kd53sd"
-path="res://.godot/imported/key.png-c7134bc60903bdfe6e3bb318b4ce6b0d.ctex"
+uid="uid://dojpgfgoejyb5"
+path="res://.godot/imported/lazer-base.png-b8ddebafeab29e5d47de45f46ec624e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Key/key.png"
-dest_files=["res://.godot/imported/key.png-c7134bc60903bdfe6e3bb318b4ce6b0d.ctex"]
+source_file="res://Hazards/lazer-base.png"
+dest_files=["res://.godot/imported/lazer-base.png-b8ddebafeab29e5d47de45f46ec624e3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b67epvrnq8rp"
-path="res://.godot/imported/Player-Sheet.png-6a3c2ff3a4592d9c98b179748d085a12.ctex"
+uid="uid://bgqnar2tyivo1"
+path="res://.godot/imported/panels.svg-5475133acccb7396865144a2a37a2d7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Player-Sheet.png"
-dest_files=["res://.godot/imported/Player-Sheet.png-6a3c2ff3a4592d9c98b179748d085a12.ctex"]
+source_file="res://addons/examples/nine_patch_sprite_2d/panels.svg"
+dest_files=["res://.godot/imported/panels.svg-5475133acccb7396865144a2a37a2d7f.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

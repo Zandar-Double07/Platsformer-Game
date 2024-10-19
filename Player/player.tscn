@@ -1,61 +1,137 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhr501em2xdeu"]
+[gd_scene load_steps=19 format=3 uid="uid://bhr501em2xdeu"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1wq5i"]
-[ext_resource type="Texture2D" uid="uid://b67epvrnq8rp" path="res://Player/Player-Sheet.png" id="1_d7jqk"]
 [ext_resource type="Shape2D" uid="uid://1qewjfa64scb" path="res://Player/player_hit_box.tres" id="2_uko6c"]
+[ext_resource type="Texture2D" uid="uid://cgbrcmwdpoa50" path="res://Tile/Platsformer-TileSet.png" id="3_bhml5"]
 [ext_resource type="PackedScene" uid="uid://cf780l4xnulpf" path="res://Components/Hitbox.tscn" id="3_pg2dw"]
 [ext_resource type="Script" path="res://Player/crush_detection.gd" id="5_oefqf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vvb2p"]
-atlas = ExtResource("1_d7jqk")
-region = Rect2(0, 0, 68, 132)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhq7k"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(112, 192, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eswbk"]
-atlas = ExtResource("1_d7jqk")
-region = Rect2(68, 0, 68, 132)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p8s4"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(160, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi2c0"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(208, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8tay"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(256, 192, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f456d"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(112, 112, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3onuj"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(160, 112, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bts5y"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(208, 112, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlqq6"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(256, 112, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeb2u"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(304, 112, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m22q"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(352, 112, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq2f7"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(400, 112, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tyej"]
+atlas = ExtResource("3_bhml5")
+region = Rect2(448, 112, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_acoi8"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhq7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p8s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi2c0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8tay")
+}],
 "loop": true,
-"name": &"walk_left",
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f456d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3onuj")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vvb2p")
+"texture": SubResource("AtlasTexture_bts5y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eswbk")
+"texture": SubResource("AtlasTexture_jlqq6")
 }],
 "loop": true,
-"name": &"walk_right",
+"name": &"move_platform",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeb2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m22q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq2f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tyej")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(145, 263)
+position = Vector2(131, 246)
 collision_mask = 7
-collision_priority = 5.0
 floor_constant_speed = true
 floor_max_angle = 1.309
-floor_snap_length = 10.0
+floor_snap_length = 2.0
 platform_on_leave = 2
-safe_margin = 1.0
+platform_floor_layers = 4294967291
 script = ExtResource("1_1wq5i")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 0)
 shape = ExtResource("2_uko6c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_acoi8")
-animation = &"walk_right"
+animation = &"death"
 
 [node name="Hitbox" parent="." instance=ExtResource("3_pg2dw")]
-position = Vector2(-3, 0)
 collision_layer = 0
 collision_mask = 112
 input_pickable = false
@@ -68,27 +144,27 @@ debug_color = Color(0.899342, 0.171908, 0.648036, 0.42)
 script = ExtResource("5_oefqf")
 
 [node name="CrushLeft" type="RayCast2D" parent="CrushDetection"]
-target_position = Vector2(10, 0)
+target_position = Vector2(18, 0)
 collision_mask = 6
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="CrushRight" type="RayCast2D" parent="CrushDetection"]
-target_position = Vector2(-16, 0)
+target_position = Vector2(-18, 0)
 collision_mask = 6
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="CrushUp" type="RayCast2D" parent="CrushDetection"]
-target_position = Vector2(0, -35)
+target_position = Vector2(0, -34)
 collision_mask = 6
 hit_from_inside = true
 collide_with_areas = true
 
 [node name="CrushDown" type="RayCast2D" parent="CrushDetection"]
-target_position = Vector2(0, 35)
+target_position = Vector2(0, 34)
 collision_mask = 6
 hit_from_inside = true
 collide_with_areas = true
 
-[connection signal="onHit" from="Hitbox" to="." method="_on_hitbox_hit"]
+[connection signal="onHit" from="Hitbox" to="." method="handle_death"]
