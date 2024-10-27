@@ -1,0 +1,123 @@
+[gd_scene load_steps=17 format=4 uid="uid://nnd02dr861e7"]
+
+[ext_resource type="Script" path="res://Levels/level_logic.gd" id="1_mi7lh"]
+[ext_resource type="PackedScene" uid="uid://bfdlvulsxcbew" path="res://Extending Platforms/BaseExtendingPlatform.tscn" id="2_l5eg0"]
+[ext_resource type="PackedScene" uid="uid://bp2lflc3k4ad1" path="res://Hazards/Spike.tscn" id="3_mb10i"]
+[ext_resource type="PackedScene" uid="uid://cyef1y6ax5hrf" path="res://Hazards/Lazer.tscn" id="4_1276m"]
+[ext_resource type="PackedScene" uid="uid://bxaf1o2p01jby" path="res://Hazards/lava.tscn" id="5_chl2s"]
+[ext_resource type="PackedScene" uid="uid://dkkxoqx7atgpx" path="res://Key/Key.tscn" id="6_1xh0e"]
+[ext_resource type="PackedScene" uid="uid://bvaafxltjqbnt" path="res://Key/door.tscn" id="7_qudm6"]
+[ext_resource type="PackedScene" uid="uid://qy05avbpifa6" path="res://Pressable Objects/Button.tscn" id="8_tq6xu"]
+[ext_resource type="PackedScene" uid="uid://cxkux73oo8rwx" path="res://Pressable Objects/Switch.tscn" id="9_gn5rv"]
+[ext_resource type="PackedScene" uid="uid://dvhbbfq0qbfx5" path="res://Tile/MovableBox.tscn" id="10_xfnpj"]
+[ext_resource type="PackedScene" uid="uid://bhr501em2xdeu" path="res://Player/player.tscn" id="11_syd5q"]
+[ext_resource type="TileSet" uid="uid://bj3tji5it6pja" path="res://Tile/tile_set.tres" id="12_evhdf"]
+[ext_resource type="PackedScene" uid="uid://ci7rd87xnty41" path="res://UI/LevelMenuHandler.tscn" id="13_hqild"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_12etd"]
+b = Vector2(64, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hr0rs"]
+b = Vector2(64, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tfwav"]
+b = Vector2(64, 0)
+
+[node name="DebugLevel" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_mi7lh")
+
+[node name="Platforms" type="Node" parent="."]
+process_mode = 1
+
+[node name="BaseExtendingPlatform1" parent="Platforms" instance=ExtResource("2_l5eg0")]
+position = Vector2(416, 544)
+extension_segment = SubResource("SegmentShape2D_12etd")
+base_segment = SubResource("SegmentShape2D_hr0rs")
+
+[node name="ReversedPlatform" parent="Platforms" instance=ExtResource("2_l5eg0")]
+position = Vector2(48, 176)
+rotation = 0.0
+isReversed = true
+extension_segment = SubResource("SegmentShape2D_tfwav")
+
+[node name="SpikePlatform" parent="Platforms" node_paths=PackedStringArray("platformChild") instance=ExtResource("2_l5eg0")]
+modulate = Color(1, 1, 1, 0.376471)
+position = Vector2(608, 416)
+rotation = 4.71239
+platformChild = NodePath("PlatformSpike")
+
+[node name="PlatformSpike" parent="Platforms/SpikePlatform" instance=ExtResource("3_mb10i")]
+position = Vector2(0, 0)
+
+[node name="BaseExtendingPlatform2" parent="Platforms" instance=ExtResource("2_l5eg0")]
+position = Vector2(272, 576)
+rotation = 0.0
+
+[node name="LazerPlatform" parent="Platforms" node_paths=PackedStringArray("platformChild") instance=ExtResource("2_l5eg0")]
+position = Vector2(880, 96)
+platformChild = NodePath("Lazer")
+
+[node name="Lazer" parent="Platforms/LazerPlatform" instance=ExtResource("4_1276m")]
+position = Vector2(28, -15.0001)
+rotation = 1.5708
+
+[node name="Hazards" type="Node" parent="."]
+process_mode = 1
+
+[node name="DisableLazer" parent="Hazards" instance=ExtResource("4_1276m")]
+position = Vector2(14, 112)
+
+[node name="Lazer2" parent="Hazards" instance=ExtResource("4_1276m")]
+position = Vector2(138, 218)
+rotation = 1.5708
+
+[node name="Spike" parent="Hazards" instance=ExtResource("3_mb10i")]
+position = Vector2(-48, 592)
+
+[node name="Lava" parent="Hazards" instance=ExtResource("5_chl2s")]
+position = Vector2(1104, 384)
+shape_scale = Vector2(5, 7)
+
+[node name="Interactables" type="Node" parent="."]
+process_mode = 1
+
+[node name="Key" parent="Interactables" instance=ExtResource("6_1xh0e")]
+position = Vector2(576, 576)
+
+[node name="Door" parent="Interactables" instance=ExtResource("7_qudm6")]
+position = Vector2(695, 576)
+
+[node name="Button" parent="Interactables" instance=ExtResource("8_tq6xu")]
+position = Vector2(224, 464)
+
+[node name="Switch" parent="Interactables" instance=ExtResource("9_gn5rv")]
+position = Vector2(695, 496)
+
+[node name="MovableBox" parent="Interactables" instance=ExtResource("10_xfnpj")]
+position = Vector2(448, 544)
+
+[node name="HeavyBox" parent="Interactables" instance=ExtResource("10_xfnpj")]
+position = Vector2(448, 592)
+collision_priority = 0.0
+continuous_cd = 0
+box_fragility = 2
+
+[node name="Player" parent="." instance=ExtResource("11_syd5q")]
+process_mode = 1
+position = Vector2(400, 496)
+
+[node name="Level Layout" type="TileMapLayer" parent="."]
+process_mode = 1
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAABAAAAAgACAAAAAAACAAAAAgACAAAAAAADAAAAAgACAAAAAAADAAEAAgACAAIAAAAEAAEAAgAEAAIAAAAEAAIAAgAEAAQAAAADAAIAAgACAAQAAAACAAIAAgACAAQAAAABAAIAAgACAAQAAAABAAEAAgACAAIAAAACAAEAAgACAAIAAAAAAAEAAgAAAAIAAAAAAAIAAgAAAAQAAAAEAAAAAgAEAAAAAAAAABMAAgAAAAAAAAABABMAAgACAAAAAAACABMAAgACAAAAAAADABMAAgACAAAAAAAEABMAAgACAAAAAAAFABMAAgACAAAAAAAGABMAAgACAAAAAAAHABMAAgACAAAAAAAIABMAAgACAAAAAAAJABMAAgACAAAAAAAKABMAAgACAAAAAAALABMAAgACAAAAAAAMABMAAgACAAAAAAANABMAAgACAAAAAAAOABMAAgACAAAAAAAPABMAAgACAAAAAAAQABMAAgACAAAAAAARABMAAgACAAAAAAASABMAAgACAAAAAAATABMAAgACAAAAAAAUABMAAgACAAAAAAAVABMAAgACAAAAAAAWABMAAgACAAAAAAAXABMAAgACAAAAAAAYABMAAgACAAAAAAAZABMAAgACAAAAAAAaABMAAgACAAAAAAAbABMAAgACAAAAAAAcABMAAgACAAAAAAAdABMAAgACAAAAAAAeABMAAgACAAAAAAAfABMAAgACAAAAAAAgABMAAgACAAAAAAAhABMAAgACAAAAAAAiABMAAgACAAAAAAAjABMAAgACAAAAAAAkABMAAgACAAAAAAAlABMAAgAEAAAAAAAlABQAAgAEAAIAAAAlABUAAgAEAAQAAAAkABUAAgACAAQAAAAkABQAAgACAAIAAAAjABQAAgACAAIAAAAiABQAAgACAAIAAAAhABQAAgACAAIAAAAgABQAAgACAAIAAAAfABQAAgACAAIAAAAjABUAAgACAAQAAAAiABUAAgACAAQAAAAhABUAAgACAAQAAAAgABUAAgACAAQAAAAfABUAAgACAAQAAAAeABUAAgACAAQAAAAdABUAAgACAAQAAAAcABUAAgACAAQAAAAbABUAAgACAAQAAAAaABUAAgACAAQAAAAZABUAAgACAAQAAAAYABUAAgACAAQAAAAXABUAAgACAAQAAAAWABUAAgACAAQAAAAVABUAAgACAAQAAAAUABUAAgACAAQAAAATABUAAgACAAQAAAASABUAAgACAAQAAAARABUAAgACAAQAAAAQABUAAgACAAQAAAAPABUAAgACAAQAAAAOABUAAgACAAQAAAANABUAAgACAAQAAAAMABUAAgACAAQAAAALABUAAgACAAQAAAAKABUAAgACAAQAAAAJABUAAgACAAQAAAAIABUAAgACAAQAAAAHABUAAgACAAQAAAAGABUAAgACAAQAAAAFABUAAgACAAQAAAAEABUAAgACAAQAAAADABUAAgACAAQAAAACABUAAgACAAQAAAABABUAAgACAAQAAAAAABUAAgAAAAQAAAAAABQAAgAAAAIAAAABABQAAgACAAIAAAACABQAAgACAAIAAAADABQAAgACAAIAAAAEABQAAgACAAIAAAAFABQAAgACAAIAAAAGABQAAgACAAIAAAAHABQAAgACAAIAAAAIABQAAgACAAIAAAAJABQAAgACAAIAAAAKABQAAgACAAIAAAALABQAAgACAAIAAAAMABQAAgACAAIAAAANABQAAgACAAIAAAAOABQAAgACAAIAAAAPABQAAgACAAIAAAAQABQAAgACAAIAAAARABQAAgACAAIAAAASABQAAgACAAIAAAATABQAAgACAAIAAAAUABQAAgACAAIAAAAVABQAAgACAAIAAAAWABQAAgACAAIAAAAXABQAAgACAAIAAAAYABQAAgACAAIAAAAZABQAAgACAAIAAAAaABQAAgACAAIAAAAbABQAAgACAAIAAAAcABQAAgACAAIAAAAdABQAAgACAAIAAAAeABQAAgACAAIAAAA=")
+tile_set = ExtResource("12_evhdf")
+
+[node name="LevelMenuHandler" parent="." instance=ExtResource("13_hqild")]
+layer = 2
+
+[connection signal="door_entered" from="Interactables/Door" to="." method="_on_door_entered"]
+[connection signal="button_pressed" from="Interactables/Button" to="Platforms/ReversedPlatform" method="invert_disabled"]
+[connection signal="button_pressed" from="Interactables/Switch" to="Platforms/ReversedPlatform" method="invert_disabled"]
+[connection signal="button_pressed" from="Interactables/Switch" to="Hazards/DisableLazer" method="invert_disabled"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="died" from="Player" to="LevelMenuHandler" method="_on_player_died"]

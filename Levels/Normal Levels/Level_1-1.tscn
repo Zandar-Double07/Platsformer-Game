@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b767gue5vpsnr"]
+
+[ext_resource type="PackedScene" uid="uid://qgdl150vq8su" path="res://Levels/Level_Template.tscn" id="1_h5xdc"]
+[ext_resource type="PackedScene" uid="uid://bfdlvulsxcbew" path="res://Extending Platforms/BaseExtendingPlatform.tscn" id="2_retgl"]
+
+[node name="Level" instance=ExtResource("1_h5xdc")]
+
+[node name="ExtendingPlatform" parent="Platforms" index="0" instance=ExtResource("2_retgl")]
+position = Vector2(64, 592)
+
+[node name="StartPoint" parent="." index="6"]
+position = Vector2(64, 512)

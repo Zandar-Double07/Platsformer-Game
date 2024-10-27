@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxyp2mkh1kodo"]
+
+[ext_resource type="Texture2D" uid="uid://dm3m4rfak3gjn" path="res://Tile/Tile-Placeholder.png" id="1_5fuvk"]
+[ext_resource type="Script" path="res://UI/level_complete_screen.gd" id="2_8nhb6"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_03jet"]
+
+[node name="LevelComplete" type="NinePatchRect"]
+process_mode = 3
+texture_filter = 3
+material = SubResource("CanvasItemMaterial_03jet")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -256.0
+offset_right = 360.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5fuvk")
+script = ExtResource("2_8nhb6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = -81.5
+offset_right = 81.5
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level Complete"
+
+[node name="NextLevelButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Next Level"
+
+[node name="ResetLevelButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Reset Level"
+
+[node name="LevelSelectButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back To Level Select"
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back To Main Menu"
+
+[connection signal="button_down" from="VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/ResetLevelButton" to="." method="_on_reset_level_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_button_down"]

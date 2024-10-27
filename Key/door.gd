@@ -11,7 +11,7 @@ func _ready():
 		set_unlocked()
 
 func _input(event):
-	if(event.is_action_pressed("switch") and get_overlapping_bodies().size() > 0 and unlocked): 
+	if(event.is_action_pressed("interact") and get_overlapping_bodies().size() > 0 and unlocked): 
 		door_entered.emit()
 		print("door entered")
 

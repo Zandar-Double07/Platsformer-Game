@@ -6,6 +6,7 @@ enum PlatformGroup {STONE, DIRT, WOOD}
 const EXTEND_SPEED = -200
 const MINIMUM_EXTENSION = 32
 const PUSH_FORCE = 200
+const PLAYER_PUSH_FORCE = 100
 
 #export variables
 @export var isReversed = false
@@ -125,7 +126,7 @@ func extend_platform(direction:float, delta:float):
 				collidor.apply_central_impulse(-collision.get_normal() * PUSH_FORCE)
 				
 			elif collidor is Player:
-				collidor.velocity += PUSH_FORCE * -collision.get_normal()
+				collidor.velocity += PLAYER_PUSH_FORCE * -collision.get_normal()
 		#clamp position so that the platform does not collapse on on itself
 		if extension_body.position.distance_to(bottom_left_corner.position) < MINIMUM_EXTENSION:
 			extension_body.set_position(Vector2(bottom_left_corner.position.x, bottom_left_corner.position.y - MINIMUM_EXTENSION))

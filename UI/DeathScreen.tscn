@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://41v1b7irql7w"]
+
+[ext_resource type="Script" path="res://UI/death_screen.gd" id="1_ad1ib"]
+[ext_resource type="Texture2D" uid="uid://dm3m4rfak3gjn" path="res://Tile/Tile-Placeholder.png" id="1_hg5ly"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vsvlk"]
+font_size = 32
+
+[node name="DeathScreenTexture" type="NinePatchRect"]
+process_mode = 3
+show_behind_parent = true
+texture_filter = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -256.0
+offset_right = 360.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_hg5ly")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource("1_ad1ib")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -81.0
+offset_right = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="Label" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "You Died!"
+label_settings = SubResource("LabelSettings_vsvlk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="VSplitContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Retry"
+
+[node name="LevelSelect" type="Button" parent="VSplitContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back To Level Select"
+
+[node name="MenuSelectButton" type="Button" parent="VSplitContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Quit To Menu"
+
+[connection signal="button_down" from="VSplitContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_button_down"]
+[connection signal="button_down" from="VSplitContainer/HBoxContainer/LevelSelect" to="." method="_on_level_select_button_down"]
+[connection signal="button_down" from="VSplitContainer/HBoxContainer/MenuSelectButton" to="." method="_on_menu_select_button_button_down"]

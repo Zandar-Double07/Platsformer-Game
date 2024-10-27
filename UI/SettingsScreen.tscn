@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce0jcf1p214tm"]
+
+[ext_resource type="Texture2D" uid="uid://dm3m4rfak3gjn" path="res://Tile/Tile-Placeholder.png" id="1_edmyj"]
+[ext_resource type="Script" path="res://UI/settings_screen.gd" id="2_t8owg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gdw5q"]
+font_size = 64
+
+[node name="SettingsScreen" type="NinePatchRect"]
+z_index = 10
+texture_filter = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+texture = ExtResource("1_edmyj")
+script = ExtResource("2_t8owg")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_gdw5q")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+
+[connection signal="button_down" from="BackButton" to="." method="_on_back_button_button_down"]

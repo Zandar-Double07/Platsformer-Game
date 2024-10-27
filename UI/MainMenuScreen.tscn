@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3k11n2hfckfg"]
+
+[ext_resource type="Texture2D" uid="uid://dm3m4rfak3gjn" path="res://Tile/Tile-Placeholder.png" id="1_ds4fs"]
+[ext_resource type="Script" path="res://UI/main_menu_screen.gd" id="2_e2vha"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0oka1"]
+font_size = 32
+
+[node name="MainMenuScreen" type="NinePatchRect"]
+process_mode = 3
+texture_filter = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ds4fs")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource("2_e2vha")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_right = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Platsformer Title"
+label_settings = SubResource("LabelSettings_0oka1")
+
+[node name="LevelSelectButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
+
+[connection signal="button_down" from="VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_down"]
+[connection signal="button_down" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_button_down"]

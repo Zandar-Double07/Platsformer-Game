@@ -60,7 +60,4 @@ func handle_death():
 	#let game know player died
 	died.emit()
 	queue_free()
-	#temporary!
-	if is_inside_tree():
-		get_tree().reload_current_scene()
 	

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://br2ctu1q00tjb"]
+
+[ext_resource type="Script" path="res://UI/level_select_button.gd" id="1_l32wl"]
+
+[node name="LevelSelectButton" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Level 1"
+script = ExtResource("1_l32wl")
+
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]

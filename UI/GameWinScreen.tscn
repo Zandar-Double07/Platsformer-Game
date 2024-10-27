@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://u081krbxtlba"]
+
+[ext_resource type="Texture2D" uid="uid://dm3m4rfak3gjn" path="res://Tile/Tile-Placeholder.png" id="1_qak5s"]
+[ext_resource type="Script" path="res://UI/game_win_screen.gd" id="2_3u7j4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_it1t4"]
+font_size = 96
+
+[node name="GameWinScreen" type="NinePatchRect"]
+texture_filter = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qak5s")
+script = ExtResource("2_3u7j4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -66.0
+offset_right = 212.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU WIN"
+label_settings = SubResource("LabelSettings_it1t4")
+
+[node name="LevelSelectButton" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -81.5
+offset_top = -31.0
+offset_right = 81.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back To Level Select"
+
+[connection signal="button_down" from="LevelSelectButton" to="." method="_on_level_select_button_button_down"]

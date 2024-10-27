@@ -19,7 +19,7 @@ func _on_player_detection_body_exited(_body):
 #when the player
 func _unhandled_input(event:InputEvent):
 	#only switch if player is within bounds
-	if event.is_action_pressed("switch") and $PlayerDetection.get_overlapping_bodies().size() > 0: 
+	if event.is_action_pressed("interact") and $PlayerDetection.get_overlapping_bodies().size() > 0: 
 		switched = not switched
 		$AnimatedSprite2D.set_animation("on" if switched else "off")
 		button_pressed.emit()
