@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://qgdl150vq8su"]
+[gd_scene load_steps=5 format=3 uid="uid://qgdl150vq8su"]
 
 [ext_resource type="Script" path="res://Levels/level_logic.gd" id="1_mhecg"]
-[ext_resource type="PackedScene" uid="uid://dkkxoqx7atgpx" path="res://Key/Key.tscn" id="2_15wx5"]
-[ext_resource type="PackedScene" uid="uid://bvaafxltjqbnt" path="res://Key/door.tscn" id="3_0wd04"]
 [ext_resource type="PackedScene" uid="uid://bhr501em2xdeu" path="res://Player/player.tscn" id="4_jq0p1"]
 [ext_resource type="TileSet" uid="uid://bj3tji5it6pja" path="res://Tile/tile_set.tres" id="5_rya54"]
 [ext_resource type="PackedScene" uid="uid://ci7rd87xnty41" path="res://UI/LevelMenuHandler.tscn" id="6_vso3t"]
@@ -10,6 +8,20 @@
 [node name="Level" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_mhecg")
+
+[node name="Player" parent="." instance=ExtResource("4_jq0p1")]
+process_mode = 1
+position = Vector2(400, 496)
+
+[node name="Level Layout" type="TileMapLayer" parent="."]
+process_mode = 1
+tile_set = ExtResource("5_rya54")
+
+[node name="StartPoint" type="Marker2D" parent="."]
+
+[node name="LevelMenuHandler" parent="." instance=ExtResource("6_vso3t")]
+layer = 2
+visible = false
 
 [node name="Platforms" type="Node" parent="."]
 process_mode = 1
@@ -20,26 +32,5 @@ process_mode = 1
 [node name="Interactables" type="Node" parent="."]
 process_mode = 1
 
-[node name="Key" parent="Interactables" instance=ExtResource("2_15wx5")]
-position = Vector2(576, 576)
-
-[node name="Door" parent="Interactables" instance=ExtResource("3_0wd04")]
-position = Vector2(695, 576)
-
-[node name="Player" parent="." instance=ExtResource("4_jq0p1")]
-process_mode = 1
-position = Vector2(400, 496)
-
-[node name="Level Layout" type="TileMapLayer" parent="."]
-process_mode = 1
-tile_set = ExtResource("5_rya54")
-
-[node name="LevelMenuHandler" parent="." instance=ExtResource("6_vso3t")]
-layer = 2
-visible = false
-
-[node name="StartPoint" type="Marker2D" parent="."]
-
-[connection signal="door_entered" from="Interactables/Door" to="." method="_on_door_entered"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="died" from="Player" to="LevelMenuHandler" method="_on_player_died"]

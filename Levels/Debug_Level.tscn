@@ -23,7 +23,7 @@ b = Vector2(64, 0)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_tfwav"]
 b = Vector2(64, 0)
 
-[node name="DebugLevel" type="Node2D"]
+[node name="Level" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_mi7lh")
 
@@ -39,6 +39,7 @@ base_segment = SubResource("SegmentShape2D_hr0rs")
 position = Vector2(48, 176)
 rotation = 0.0
 isReversed = true
+starting_extension = 32
 extension_segment = SubResource("SegmentShape2D_tfwav")
 
 [node name="SpikePlatform" parent="Platforms" node_paths=PackedStringArray("platformChild") instance=ExtResource("2_l5eg0")]
@@ -53,6 +54,7 @@ position = Vector2(0, 0)
 [node name="BaseExtendingPlatform2" parent="Platforms" instance=ExtResource("2_l5eg0")]
 position = Vector2(272, 576)
 rotation = 0.0
+starting_extension = 64
 
 [node name="LazerPlatform" parent="Platforms" node_paths=PackedStringArray("platformChild") instance=ExtResource("2_l5eg0")]
 position = Vector2(880, 96)
@@ -114,6 +116,10 @@ tile_set = ExtResource("12_evhdf")
 
 [node name="LevelMenuHandler" parent="." instance=ExtResource("13_hqild")]
 layer = 2
+visible = false
+
+[node name="StartPoint" type="Marker2D" parent="."]
+position = Vector2(400, 498)
 
 [connection signal="door_entered" from="Interactables/Door" to="." method="_on_door_entered"]
 [connection signal="button_pressed" from="Interactables/Button" to="Platforms/ReversedPlatform" method="invert_disabled"]

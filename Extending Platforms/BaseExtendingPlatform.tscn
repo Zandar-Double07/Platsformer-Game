@@ -8,7 +8,7 @@
 [node name="ExtendingPlatform" type="AnimatableBody2D"]
 texture_filter = 3
 texture_repeat = 2
-position = Vector2(57, 7)
+position = Vector2(39, 7)
 rotation = 1.5708
 collision_layer = 2
 collision_mask = 0
@@ -20,7 +20,6 @@ metadata/_edit_group_ = true
 collision_layer = 0
 collision_mask = 7
 collision_priority = 2.0
-motion_mode = 1
 slide_on_ceiling = false
 wall_min_slide_angle = 3.14159
 floor_max_angle = 0.0

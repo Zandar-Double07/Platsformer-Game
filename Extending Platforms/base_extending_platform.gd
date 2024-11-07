@@ -10,6 +10,7 @@ const PLAYER_PUSH_FORCE = 100
 
 #export variables
 @export var isReversed = false
+@export var starting_extension := 0
 #object that sticks to the platform's top
 @export var platformChild:Node2D
 @export var thisPlatformGroup: PlatformGroup = PlatformGroup.STONE
@@ -68,6 +69,7 @@ func _ready():
 	
 	#assign shape to Extension Body and center it
 	extension_collision.shape = extension_segment
+	extension_body.position -= Vector2(0, starting_extension)
 	#Create polygon to assign to Collision
 	var points:PackedVector2Array = create_shape()
 	$PlatformCollision.set_polygon(points)
@@ -75,6 +77,7 @@ func _ready():
 	
 	extension_body.add_collision_exception_with(self)
 	extensionMidPoint = extension_segment.a.distance_to(extension_segment.b) / 2
+	var smaller_segment_y = min(extension_segment.a.y, extension_segment.b.y)
 
 
 #process platform
@@ -118,7 +121,7 @@ func extend_platform(direction:float, delta:float):
 		if(isReversed):
 			extension_velocity *= -1
 		extension_velocity = extension_velocity.rotated(rotation)
-		#test move extension body
+		#move extension body
 		var collision = extension_body.move_and_collide(extension_velocity * delta)
 		if (collision):
 			var collidor = collision.get_collider()
@@ -127,6 +130,6 @@ func extend_platform(direction:float, delta:float):
 				
 			elif collidor is Player:
 				collidor.velocity += PLAYER_PUSH_FORCE * -collision.get_normal()
-		#clamp position so that the platform does not collapse on on itself
+		#clamp position so that the platform does not collapse on on itsel
 		if extension_body.position.distance_to(bottom_left_corner.position) < MINIMUM_EXTENSION:
 			extension_body.set_position(Vector2(bottom_left_corner.position.x, bottom_left_corner.position.y - MINIMUM_EXTENSION))

@@ -1,6 +1,6 @@
 extends Node2D
 
-var switched = false
+var switched := false
 
 signal button_pressed
 

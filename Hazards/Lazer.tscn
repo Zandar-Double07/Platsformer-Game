@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyef1y6ax5hrf"]
+[gd_scene load_steps=9 format=3 uid="uid://cyef1y6ax5hrf"]
 
 [ext_resource type="Texture2D" uid="uid://dojpgfgoejyb5" path="res://Hazards/lazer-base.png" id="1_v6lrj"]
 [ext_resource type="Script" path="res://Hazards/lazer.gd" id="1_vg7i2"]
 [ext_resource type="Script" path="res://Components/hazard.gd" id="2_poa6p"]
 [ext_resource type="Script" path="res://addons/nine_patch_sprite_2d/nine_patch_sprite_2d.gd" id="4_71pqm"]
 [ext_resource type="Texture2D" uid="uid://c1hbokmvgyarn" path="res://Hazards/lazer-texture.png" id="5_n1dk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tl3ku"]
+size = Vector2(24, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47600"]
 size = Vector2(16, 16)
@@ -14,15 +17,18 @@ size = Vector2(16, 16)
 
 [node name="Lazer" type="Node2D"]
 texture_filter = 3
-position = Vector2(38, 218)
+position = Vector2(0, 4)
 script = ExtResource("1_vg7i2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tl3ku")
 
 [node name="Hazard" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 0
 script = ExtResource("2_poa6p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazard"]
+[node name="HazardCollision2D" type="CollisionShape2D" parent="Hazard"]
 shape = SubResource("RectangleShape2D_47600")
 
 [node name="NinePatchSprite2D" type="Node2D" parent="Hazard"]

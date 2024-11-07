@@ -2,7 +2,7 @@ extends Node2D
 
 var isDisabled := false
 @onready var ray_cast_2d = $RayCast2D
-@onready var collision_shape_2d = $Hazard/CollisionShape2D
+@onready var collision_shape_2d = $Hazard/HazardCollision2D
 @onready var nine_patch_sprite_2d = $Hazard/NinePatchSprite2D
 @onready var hazard = $Hazard
 
@@ -33,5 +33,3 @@ func _physics_process(_delta):
 	collision_shape_2d.call_deferred("set_shape", lazer_shape)
 	#center lazer position
 	hazard.position = Vector2(hazard.position.x, -(lazer_length + 24) / 2 )
-	
-	
